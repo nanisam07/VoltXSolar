@@ -145,7 +145,7 @@ export default function Hero() {
           {/* Action Systems with Premium Emerald Palette Configuration */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <a
-              href="#survey"
+              href="/survey"
               className="group/btn relative flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#059669] hover:bg-[#047857] text-white font-medium text-[13px] tracking-tight rounded-full transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] shadow-[0_4px_12px_rgba(5,150,105,0.15)] hover:shadow-[0_6px_20px_rgba(5,150,105,0.25)] hover:-translate-y-0.5 active:translate-y-0"
             >
               <span className="font-sans">Book Free Site Survey</span>
@@ -153,7 +153,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="#savings"
+              href="/solar"
               className="group/link flex items-center justify-center gap-1 px-5 py-3.5 text-[#059669] font-medium text-[13px] tracking-tight rounded-full transition-colors duration-200"
             >
               <span className="font-sans group-hover/link:underline decoration-2 underline-offset-4">Calculate Your Savings</span>

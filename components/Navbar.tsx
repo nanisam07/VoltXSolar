@@ -13,12 +13,12 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Government Subsidy", href: "#subsidy" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Founder", href: "/founder" },
+  { label: "Projects", href: "/Projects" },
+  { label: "Calculate your Solar", href: "/solar" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -73,15 +73,15 @@ export default function Navbar() {
         {/* LEFT CONTAINER: Logo */}
         <div className="flex-1 flex justify-start">
           <a
-            href="#home"
+            href="/"
             className="flex items-center gap-3 group relative z-50 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B1F3A]/20"
-            aria-label="Voltex Solar Homepage"
+            aria-label="Move to  Solar Homepage"
           >
             <div className="relative flex items-center justify-center w-14 h-14">
   
 
   <Image
-    src="/image/logo.png"
+    src="/logo/movelogo.png"
     alt="Logo"
     width={80}
     height={80}
@@ -89,7 +89,7 @@ export default function Navbar() {
   />
 </div>
             <span className="font-semibold text-[17px] tracking-tight text-[#0B1F3A] antialiased">
-              Volt X <span className="font-light text-[#0B1F3A]/60">Solar</span>
+              Move to  <span className="font-light text-[#0B1F3A]/60">Solar</span>
             </span>
           </a>
         </div>
@@ -124,7 +124,7 @@ export default function Navbar() {
         <div className="flex-1 flex justify-end items-center">
           <div className="hidden lg:block">
             <a
-              href="#survey"
+              href="/survey"
               className="group relative flex items-center gap-2 px-5 py-2.5 bg-[#0B1F3A] hover:bg-[#122e54] text-white font-medium text-[13.5px] rounded-full transition-all duration-300 overflow-hidden whitespace-nowrap shadow-[0_4px_12px_rgba(11,31,58,0.15)] hover:shadow-[0_6px_20px_rgba(11,31,58,0.25)] hover:-translate-y-0.5 active:translate-y-0"
             >
               <span className="relative z-10 transition-colors group-hover:text-[#FFD54A]">Book Free Survey</span>

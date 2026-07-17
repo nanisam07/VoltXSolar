@@ -3,6 +3,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, MotionProps } from "framer-motion";
 
+const socialLinks = [
+  { name: "Instagram", href: "https://www.instagram.com/moveto_solar" },
+  { name: "LinkedIn", href: "#" }, // TODO: replace with your LinkedIn URL
+  { name: "WhatsApp", href: "https://wa.me/918790650918" },
+];
+
 export default function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isContainerInView = useInView(containerRef, { once: true, amount: 0.05 });
@@ -65,7 +71,7 @@ export default function Footer() {
         }}
         aria-hidden="true"
       >
-        Volt X
+        MovetoSolar
       </div>
 
       {/* Structural Minimal Grid Lines */}
@@ -87,7 +93,7 @@ export default function Footer() {
               {...getFadeUpAnimation(0)}
               className="text-[44px] sm:text-[54px] md:text-[64px] font-bold tracking-[-0.04em] leading-none text-black select-none"
             >
-              Volt X
+              MovetoSolar
             </motion.h2>
             <motion.div
               {...getFadeUpAnimation(1)}
@@ -104,13 +110,15 @@ export default function Footer() {
           >
             <div className="flex flex-col gap-1.5">
               <span className="text-[9px] font-bold tracking-[0.2em] text-black/30 uppercase mb-0.5">Contact</span>
-              <a href="tel:+91XXXXXXXXXX" className="hover:text-black transition-colors duration-200">+91 XXXXX XXXXX</a>
-              <a href="mailto:info@voltexsolar.in" className="hover:text-black transition-colors duration-200">info@voltexsolar.in</a>
+              <a href="tel:+918790650918" className="hover:text-black transition-colors duration-200">+91 8790650918</a>
+              <a href="tel:+917799322357" className="hover:text-black transition-colors duration-200">+91 7799322357</a>
+              <a href="mailto:movetosolar@gmail.com" className="hover:text-black transition-colors duration-200">movetosolar@gmail.com</a>
             </div>
 
             <div className="flex flex-col gap-1.5">
               <span className="text-[9px] font-bold tracking-[0.2em] text-black/30 uppercase mb-0.5">Location & Desk</span>
-              <span className="text-black/50">Hyderabad, Telangana</span>
+              <span className="text-black/50">Medchal, Hyderabad, Telangana</span>
+              <span className="text-black/50">Banjara hills road Number 11, BRK News</span>
               <span className="text-black/40 font-normal text-[11px]">Mon–Sat — 9:00 AM – 6:00 PM</span>
             </div>
           </motion.div>
@@ -145,18 +153,20 @@ export default function Footer() {
 
           {/* Clean Typography Only Social Hub Matrix */}
           <div className="flex items-center gap-x-6 gap-y-2 flex-wrap text-[12px] font-bold">
-            {["Instagram", "LinkedIn", "Facebook", "WhatsApp"].map((social, idx) => (
+            {socialLinks.map((social, idx) => (
               <motion.div
-                key={social}
+                key={social.name}
                 {...getFadeUpAnimation(9 + idx)}
                 className="inline-block"
               >
                 <a
-                  href={`#${social.toLowerCase()}`}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative inline-flex items-center text-black/40 hover:text-black transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111111]"
                 >
                   <span className="inline-block transition-transform duration-300 group-hover:-translate-y-[1px]">
-                    {social}<span className="inline-block font-sans ml-0.5 text-[9px] text-black/30 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                    {social.name}<span className="inline-block font-sans ml-0.5 text-[9px] text-black/30 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
                   </span>
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
                 </a>
@@ -170,7 +180,7 @@ export default function Footer() {
             ===================================================== */}
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] font-semibold tracking-wider text-black/30 uppercase pt-6 mt-4 border-t border-black/[0.03]">
           <motion.span {...getFadeUpAnimation(13)}>
-            © 2026 Volt X Solar
+            © 2026 Move to Solar. All rights reserved.
           </motion.span>
           <motion.span {...getFadeUpAnimation(14)} className="font-mono tracking-tight lowercase text-black/[0.25]">
             Designed with precision by <a href="https://idea2site.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/50 transition-colors duration-200">Idea2Site</a>.

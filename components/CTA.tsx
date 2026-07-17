@@ -138,7 +138,7 @@ export default function CTA() {
         >
           {/* High-Tier Primary Magnetic Button */}
           <a
-            href="#site-survey"
+            href="/survey"
             className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 h-14 bg-[#111111] text-white font-medium text-[15px] rounded-full overflow-hidden shadow-xs transition-transform duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111111]"
           >
             {/* Glossy overlay slide animation */}
@@ -149,11 +149,11 @@ export default function CTA() {
 
           {/* Luxury Floating Secondary Button */}
           <a
-            href="tel:+91XXXXXXXXXX"
+            href="tel:+91 8790650918"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 h-14 bg-white/40 backdrop-blur-xs border border-black/10 text-[#111111] font-medium text-[15px] rounded-full transition-all duration-300 ease-out hover:border-black/30 hover:bg-white/80 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111111]"
           >
             <Phone className="w-4 h-4 text-black/30 transition-transform duration-500 ease-out group-hover:rotate-12" />
-            <span>Call +91 XXXXX XXXXX</span>
+            <span>Call +91 8790650918</span>
           </a>
         </motion.div>
       </div>

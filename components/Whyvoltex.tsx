@@ -19,7 +19,7 @@ const storySteps: StoryStep[] = [
   {
     id: "scene-1",
     number: "01",
-    title: "Why homeowners choose VoltX.",
+    title: "Why homeowners choose Move to Solar.",
     image: "/image/Sec1.jpg",
   },
   {
