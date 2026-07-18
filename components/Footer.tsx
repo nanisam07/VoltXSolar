@@ -112,7 +112,7 @@ export default function Footer() {
               <span className="text-[9px] font-bold tracking-[0.2em] text-black/30 uppercase mb-0.5">Contact</span>
               <a href="tel:+918790650918" className="hover:text-black transition-colors duration-200">+91 8790650918</a>
               <a href="tel:+917799322357" className="hover:text-black transition-colors duration-200">+91 7799322357</a>
-              <a href="mailto:movetosolar@gmail.com" className="hover:text-black transition-colors duration-200">movetosolar@gmail.com</a>
+              <a href="mailto:movetosolarpower@gmail.com" className="hover:text-black transition-colors duration-200">movetosolarpower@gmail.com</a>
             </div>
 
             <div className="flex flex-col gap-1.5">

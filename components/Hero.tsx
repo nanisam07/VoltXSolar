@@ -154,7 +154,7 @@ export default function Hero() {
 
             <a
               href="/solar"
-              className="group/link flex items-center justify-center gap-1 px-5 py-3.5 text-[#059669] font-medium text-[13px] tracking-tight rounded-full transition-colors duration-200"
+              className="group/link flex items-center justify-center gap-1 px-5 py-3.5 bg-[#059669] text-[#FFF] font-medium text-[13px] tracking-tight rounded-full transition-colors duration-200"
             >
               <span className="font-sans group-hover/link:underline decoration-2 underline-offset-4">Calculate Your Savings</span>
               <span className="transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover/link:translate-x-0.5">&rarr;</span>
@@ -167,7 +167,7 @@ export default function Hero() {
             className="pt-8 border-t border-[#0F172A]/10 grid grid-cols-3 gap-8 text-[#0F172A] font-sans"
           >
             <div className="space-y-1">
-              <p className="text-[24px] lg:text-[28px] font-semibold tracking-tight text-[#0F172A] leading-none">500+</p>
+              <p className="text-[24px] lg:text-[28px] font-semibold tracking-tight text-[#0F172A] leading-none">200+</p>
               <p className="text-[12px] text-[#64748B] leading-tight">Home powered</p>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B]">Projects</p>
             </div>

@@ -47,7 +47,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
               transition={{ duration: 1.8, ease: luxuryEase, delay: 0.2 }}
               className="font-extralight text-[#E2E8F0]"
             >
-              VOLT
+              Move
             </motion.span>
 
             {/* "X" - The Premium Signature Node */}
@@ -58,7 +58,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
                 transition={{ duration: 1.4, ease: luxuryEase, delay: 0.5 }}
                 className="font-semibold text-[#059669] drop-shadow-[0_0_30px_rgba(5,150,105,0.25)] relative z-10"
               >
-                X
+                To
               </motion.span>
               {/* Micro Ambient Glow Behind X */}
               <motion.span 

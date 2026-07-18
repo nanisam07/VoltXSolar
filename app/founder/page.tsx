@@ -25,9 +25,36 @@ const fvStaggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.16, delayChildren: 0.2 },
   },
   exit: { opacity: 0 }
+};
+
+// Premium Card Entrance and Exit Controls
+const fvCardSection: Variants = {
+  hidden: { 
+    opacity: 0, 
+    y: 80,
+    scale: 0.96 
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: { 
+      duration: 1.4, 
+      ease: [0.16, 1, 0.3, 1] // Fluid cinematic curve
+    } 
+  },
+  exit: {
+    opacity: 0,
+    y: -40,
+    scale: 0.98,
+    transition: { 
+      duration: 0.8, 
+      ease: [0.16, 1, 0.3, 1] 
+    }
+  }
 };
 
 const fvImageMaskReveal: Variants = {
@@ -36,7 +63,7 @@ const fvImageMaskReveal: Variants = {
     clipPath: "inset(0% 0% 0% 0% rounded 16px)",
     opacity: 1,
     scale: 1,
-    transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
   },
 };
 
@@ -192,52 +219,56 @@ export default function FounderPage() {
                 </motion.p>
               </div>
 
-              {/* 3-Column Profile Cards Block */}
+              {/* Alternating Row Layout with Viewport Intro / Outro Controls */}
               <motion.div 
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
                 exit="exit"
+                viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
                 variants={fvStaggerContainer}
-                className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 w-full pt-4"
+                className="flex flex-col space-y-16 md:space-y-24 w-full pt-4"
               >
-                {team.map((member, index) => (
-                  <motion.div 
-                    key={index}
-                    variants={fvTextReveal}
-                    // Apple Floating Ambient Vector Loop
-                    animate={{ y: [0, index % 2 === 0 ? -6 : -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 5 + index, ease: "easeInOut" }}
-                    className="group relative flex flex-col space-y-6 bg-white/50 backdrop-blur-md border border-neutral-200/50 p-6 rounded-2xl transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-neutral-200/40"
-                    onMouseEnter={() => setCursorType("hover")}
-                    onMouseLeave={() => setCursorType("default")}
-                  >
-                    {/* Image Frame with Micro Motion */}
-                    <div className="relative w-full aspect-[4/5] overflow-hidden rounded-xl bg-neutral-50 border border-neutral-200/40">
-                      <motion.div initial="hidden" animate="visible" variants={fvImageMaskReveal} className="w-full h-full relative">
-                        <Image 
-                          src={member.image} 
-                          alt={member.name} 
-                          fill 
-                          priority={index === 0}
-                          className="object-cover contrast-[1.01] brightness-[0.99] transition-transform duration-700 group-hover:scale-102"
-                        />
-                      </motion.div>
-                    </div>
+                {team.map((member, index) => {
+                  const isEven = index % 2 === 1;
+                  return (
+                    <motion.div 
+                      key={index}
+                      variants={fvCardSection}
+                      className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center bg-white/50 backdrop-blur-md border border-neutral-200/50 p-6 md:p-12 rounded-2xl transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-neutral-200/40"
+                      onMouseEnter={() => setCursorType("hover")}
+                      onMouseLeave={() => setCursorType("default")}
+                    >
+                      {/* Typography Metadata */}
+                      <div className={`space-y-4 md:col-span-7 flex flex-col justify-center ${isEven ? 'md:order-2' : 'md:order-1'}`}>
+                        <span className="block font-mono text-[10px] uppercase tracking-wider text-neutral-400">
+                          // 0{index + 1} // {member.role}
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 transition-colors duration-300 group-hover:text-neutral-500">
+                          {member.name}
+                        </h2>
+                        <p className="text-base font-light text-neutral-500 leading-relaxed pt-2 max-w-xl">
+                          {member.desc}
+                        </p>
+                      </div>
 
-                    {/* Typography Metadata */}
-                    <div className="space-y-2 flex-grow">
-                      <span className="block font-mono text-[10px] uppercase tracking-wider text-neutral-400">
-                        // 0{index + 1} // {member.role}
-                      </span>
-                      <h2 className="text-2xl font-bold tracking-tight text-neutral-900 transition-colors duration-300 group-hover:text-neutral-500">
-                        {member.name}
-                      </h2>
-                      <p className="text-sm font-light text-neutral-500 leading-relaxed pt-2">
-                        {member.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                      {/* Image Frame with Mask Reveals */}
+                      <div className={`w-full aspect-[4/3] md:aspect-[4/5] md:col-span-5 overflow-hidden rounded-xl bg-neutral-50 border border-neutral-200/40 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                        <motion.div 
+                          variants={fvImageMaskReveal} 
+                          className="w-full h-full relative"
+                        >
+                          <Image 
+                            src={member.image} 
+                            alt={member.name} 
+                            fill 
+                            priority={index === 0}
+                            className="object-cover contrast-[1.01] brightness-[0.99] transition-transform duration-700 group-hover:scale-102"
+                          />
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
 
             </div>
