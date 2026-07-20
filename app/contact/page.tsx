@@ -253,13 +253,13 @@ export default function ContactPage() {
               </div>
               <span className="text-xs uppercase tracking-widest text-neutral-500 font-medium">Email</span>
               <p className="text-sm text-neutral-500 mt-1">General Inquiries</p>
-              <h3 className="text-2xl font-normal text-neutral-955 mt-4 tracking-tight break-all">info@movetosolar.in</h3>
+              <h3 className="text-2xl font-normal text-neutral-955 mt-4 tracking-tight break-all">MoveToSolarpower@gmail.com</h3>
             </div>
             <div className="mt-8">
               <a 
-                href="mailto:info@movetosolar.in" 
+                href="mailto:MoveToSolarpower@gmail.com" 
                 className="inline-flex items-center justify-between w-full px-6 py-4 bg-white text-neutral-955 border border-neutral-200 rounded-xl text-sm font-medium tracking-tight group hover:bg-neutral-100 hover:border-neutral-300 transition-colors duration-300"
-                aria-label="Mail info@movetosolar.in"
+                aria-label="MoveToSolarpower@gmail.com"
               >
                 <span>Mail Now</span>
                 <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
@@ -340,9 +340,7 @@ export default function ContactPage() {
                 <div className="space-y-1">
                   <h4 className="text-xl font-normal text-neutral-955">Banjara Hills</h4>
                   <p className="text-neutral-600 font-light leading-relaxed">
-                    Road No.11, BRK News Building,<br />
-                    Banjara Hills, Hyderabad,<br />
-                    Telangana, India
+                    Road number 11,Banjara Hills, Hyderabad, Telangana
                   </p>
                 </div>
               </div>

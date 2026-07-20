@@ -89,7 +89,7 @@ export default function Navbar() {
   />
 </div>
             <span className="font-semibold text-[17px] tracking-tight text-[#0B1F3A] antialiased">
-              Move to  <span className="font-light text-[#0B1F3A]/60">Solar</span>
+              Move to Solar 
             </span>
           </a>
         </div>

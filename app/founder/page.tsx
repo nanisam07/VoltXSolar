@@ -43,7 +43,7 @@ const fvCardSection: Variants = {
     scale: 1,
     transition: { 
       duration: 1.4, 
-      ease: [0.16, 1, 0.3, 1] // Fluid cinematic curve
+      ease: [0.16, 1, 0.3, 1] 
     } 
   },
   exit: {
@@ -57,13 +57,14 @@ const fvCardSection: Variants = {
   }
 };
 
+// MODIFIED: Reduced the inset clipping for mobile so it reveals the photo perfectly
 const fvImageMaskReveal: Variants = {
-  hidden: { clipPath: "inset(12% 12% 12% 12% rounded 32px)", opacity: 0, scale: 1.1 },
+  hidden: { clipPath: "inset(2% 2% 2% 2% rounded 16px)", opacity: 0, scale: 1.05 },
   visible: {
     clipPath: "inset(0% 0% 0% 0% rounded 16px)",
     opacity: 1,
     scale: 1,
-    transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
+    transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
   },
 };
 
@@ -72,7 +73,6 @@ export default function FounderPage() {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   const MotionLink = motion.create(Link);
-  // Custom Smooth Premium Cursor State
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
   const [cursorType, setCursorType] = useState<"default" | "hover" | "interactive">("default");
 
@@ -93,7 +93,6 @@ export default function FounderPage() {
   const yParallax = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   const scaleParallax = useTransform(scrollYProgress, [0, 0.5, 1], [1.06, 1, 1.06]);
 
-  // Leadership Team Array
   const team = [
     {
       name: "Mosin",
@@ -146,7 +145,7 @@ export default function FounderPage() {
       {isMounted && (
         <div 
           ref={containerRef} 
-          className="relative bg-[#FAFAFA] text-[#111111] antialiased font-sans selection:bg-[#111111] selection:text-[#FAFAFA] min-h-screen overflow-x-hidden cursor-none"
+          className="relative bg-[#FAFAFA] text-[#111111] antialiased font-sans selection:bg-[#111111] selection:text-[#FAFAFA] min-h-screen overflow-x-hidden md:cursor-none"
         >
           {/* INTRO LOAD SCREEN MASK */}
           <motion.div 
@@ -219,7 +218,7 @@ export default function FounderPage() {
                 </motion.p>
               </div>
 
-              {/* Alternating Row Layout with Viewport Intro / Outro Controls */}
+              {/* Alternating Row Layout */}
               <motion.div 
                 initial="hidden"
                 whileInView="visible"
@@ -251,8 +250,8 @@ export default function FounderPage() {
                         </p>
                       </div>
 
-                      {/* Image Frame with Mask Reveals */}
-                      <div className={`w-full aspect-[4/3] md:aspect-[4/5] md:col-span-5 overflow-hidden rounded-xl bg-neutral-50 border border-neutral-200/40 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                      {/* MODIFIED: Changed height rules and object-fit layout style to preserve full photo visibility */}
+                      <div className={`w-full relative aspect-[4/5] sm:aspect-[1/1] md:aspect-[4/5] md:col-span-5 overflow-hidden rounded-xl bg-neutral-50 border border-neutral-200/40 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
                         <motion.div 
                           variants={fvImageMaskReveal} 
                           className="w-full h-full relative"
@@ -262,7 +261,7 @@ export default function FounderPage() {
                             alt={member.name} 
                             fill 
                             priority={index === 0}
-                            className="object-cover contrast-[1.01] brightness-[0.99] transition-transform duration-700 group-hover:scale-102"
+                            className="object-contain md:object-cover contrast-[1.01] brightness-[0.99] transition-transform duration-700 group-hover:scale-102"
                           />
                         </motion.div>
                       </div>
@@ -280,13 +279,13 @@ export default function FounderPage() {
             </div>
           </section>
 
-          {/* SECTION 2: THE VISION (HIGH CONTRAST EDITORIAL) */}
+          {/* SECTION 2: THE VISION */}
           <section ref={parallaxRef} className="relative py-32 md:py-48 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1800px] mx-auto z-10 overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
               
-              {/* Kinematic Apple Parallax Image Panel */}
+              {/* MODIFIED: Changed layout rules for secondary hero panel */}
               <div 
-                className="lg:col-span-5 relative aspect-[4/5] w-full overflow-hidden bg-neutral-100 rounded-2xl border border-neutral-200/40 shadow-xl shadow-neutral-200/30"
+                className="lg:col-span-5 relative aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] w-full overflow-hidden bg-neutral-100 rounded-2xl border border-neutral-200/40 shadow-xl shadow-neutral-200/30"
                 onMouseEnter={() => setCursorType("hover")}
                 onMouseLeave={() => setCursorType("default")}
               >
@@ -295,7 +294,7 @@ export default function FounderPage() {
                     src="/image/hero1.webp" 
                     alt="MoveToSolar clean structural workspace blueprint" 
                     fill 
-                    className="object-cover opacity-95 transition-all duration-1000 filter grayscale contrast-105 hover:grayscale-0"
+                    className="object-contain lg:object-cover opacity-95 transition-all duration-1000 filter grayscale contrast-105 hover:grayscale-0"
                   />
                 </motion.div>
               </div>
@@ -320,7 +319,7 @@ export default function FounderPage() {
             </div>
           </section>
 
-          {/* SECTION 3: LEADERSHIP PHILOSOPHY (ASYNCHRONOUS SWISS COLUMNS) */}
+          {/* SECTION 3: LEADERSHIP PHILOSOPHY */}
           <section className="relative py-32 md:py-48 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1800px] mx-auto z-10 border-t border-neutral-200/50">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-end">
               <div className="lg:col-span-6 space-y-4">
@@ -357,7 +356,7 @@ export default function FounderPage() {
             </motion.div>
           </section>
 
-          {/* SECTION 4: WHY WE STARTED MOVETOSOLAR (STRUCTURAL TIMELINE MATRIX) */}
+          {/* SECTION 4: WHY WE STARTED MOVETOSOLAR */}
           <section className="relative py-32 md:py-48 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1800px] mx-auto z-10 border-t border-neutral-200/50">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               
@@ -397,7 +396,7 @@ export default function FounderPage() {
             </div>
           </section>
 
-          {/* SECTION 5: MESSAGE FROM THE BOARD (PURE ESSENCE EDITORIAL) */}
+          {/* SECTION 5: MESSAGE FROM THE BOARD */}
           <section className="relative py-40 md:py-56 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1500px] mx-auto z-10 text-left border-t border-neutral-200/50">
             <motion.div 
               initial="hidden"
@@ -426,13 +425,12 @@ export default function FounderPage() {
             </motion.div>
           </section>
 
-          {/* SECTION 6: CLOSING CTA (EXCLUSIVELY BRIGHT ARCHITECTURAL LAYOUT Frame) */}
+          {/* SECTION 6: CLOSING CTA */}
           <section 
             className="relative py-48 px-6 md:px-12 lg:px-24 xl:px-32 bg-white text-[#111111] border-t border-neutral-200/60 text-center overflow-hidden z-10"
             onMouseEnter={() => setCursorType("interactive")}
             onMouseLeave={() => setCursorType("default")}
           >
-            {/* Fine line grid pattern */}
             <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{
               backgroundImage: `linear-gradient(to right, #111 1px, transparent 1px), linear-gradient(to bottom, #111 1px, transparent 1px)`,
               backgroundSize: "60px 60px"
@@ -461,10 +459,10 @@ export default function FounderPage() {
                 className="pt-4"
               >
                 <MotionLink
-                 href="/survey"
+                  href="/survey"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center justify-center space-x-4 bg-neutral-900 text-white text-xs font-mono font-bold tracking-widest uppercase px-16 py-6 rounded-xl shadow-xl hover:bg-neutral-800 transition-colors duration-300 cursor-none group"
+                  className="inline-flex items-center justify-center space-x-4 bg-neutral-900 text-white text-xs font-mono font-bold tracking-widest uppercase px-16 py-6 rounded-xl shadow-xl hover:bg-neutral-800 transition-colors duration-300 md:cursor-none group"
                 >
                   <span>Book a Free Site Survey</span>
                   <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.5} />

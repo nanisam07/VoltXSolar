@@ -130,7 +130,7 @@ export default function TrustedBy() {
         </motion.div>
 
         {/* --- Certification Grid --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full text-center md:text-left">
           {CERTIFICATIONS.map((cert, index) => {
             const IconComponent = cert.icon;
             const cardNumber = String(index + 1).padStart(2, '0');
@@ -146,21 +146,25 @@ export default function TrustedBy() {
                   borderColor: '#059669',
                   boxShadow: '0 30px 60px -15px rgba(5,150,105,0.25)'
                 }}
-                className="bg-white border border-[#0F172A]/[0.04] rounded-[28px] p-8 lg:p-9 flex flex-col justify-between aspect-[4/3.5] group relative overflow-hidden cursor-pointer transition-all duration-500"
+                // MODIFIED: Added flex alignment adjustments for mobile to prevent extra empty center space
+                className="bg-white border border-[#0F172A]/[0.04] rounded-[28px] p-8 lg:p-9 flex flex-col items-center md:items-start justify-center md:justify-between min-h-[260px] md:min-h-0 md:aspect-[4/3.5] group relative overflow-hidden cursor-pointer transition-all duration-500"
               >
-                {/* Top Meta Row */}
-                <div className="flex items-center justify-between w-full relative z-10">
-                  <div className="w-12 h-12 rounded-2xl bg-[#FAFAFA] border border-[#0F172A]/[0.02] flex items-center justify-center text-[#64748B] group-hover:text-[#059669] group-hover:bg-white transition-all duration-500">
-                    <IconComponent className="w-5 h-5 stroke-[1.25] transition-transform duration-500 group-hover:rotate-6" />
+                {/* MODIFIED: Standardized absolute container adjustments for mobile index alignment */}
+                <div className="flex items-center justify-center md:justify-between w-full md:relative z-10 mb-6 md:mb-0">
+                  {/* MODIFIED: Increased icon badge wrapper sizing from w-12/h-12 to w-16/h-16 on mobile screens */}
+                  <div className="w-16 h-16 md:w-12 md:h-12 rounded-2xl bg-[#FAFAFA] border border-[#0F172A]/[0.02] flex items-center justify-center text-[#64748B] group-hover:text-[#059669] group-hover:bg-white transition-all duration-500">
+                    {/* MODIFIED: Bumped internal icon size up to w-7 h-7 on mobile viewports */}
+                    <IconComponent className="w-7 h-7 md:w-5 md:h-5 stroke-[1.25] transition-transform duration-500 group-hover:rotate-6" />
                   </div>
                   
-                  <span className="font-mono text-[11px] font-medium tracking-widest text-[#64748B]/30 group-hover:text-white/40 transition-colors duration-500">
+                  <span className="absolute top-6 right-8 md:static font-mono text-[11px] font-medium tracking-widest text-[#64748B]/30 group-hover:text-white/40 transition-colors duration-500">
                     {cardNumber}
                   </span>
                 </div>
 
                 {/* Content Block */}
-                <div className="mt-auto relative z-10 space-y-2">
+                {/* MODIFIED: Centered title and description text on mobile viewports */}
+                <div className="mt-0 md:mt-auto relative z-10 space-y-2 text-center md:text-left">
                   <h3 className="text-[18px] font-medium tracking-tight text-[#0F172A] group-hover:text-white transition-colors duration-400">
                     {cert.title}
                   </h3>
