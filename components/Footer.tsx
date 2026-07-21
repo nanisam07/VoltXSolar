@@ -118,7 +118,7 @@ export default function Footer() {
             <div className="flex flex-col gap-1.5">
               <span className="text-[9px] font-bold tracking-[0.2em] text-black/30 uppercase mb-0.5">Location & Desk</span>
               <span className="text-black/50">Medchal, Hyderabad, Telangana</span>
-              <span className="text-black/50">Banjara hills road Number 11, BRK News</span>
+              
               <span className="text-black/40 font-normal text-[11px]">Mon–Sat — 9:00 AM – 6:00 PM</span>
             </div>
           </motion.div>

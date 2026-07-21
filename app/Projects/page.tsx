@@ -147,25 +147,25 @@ export default function ProjectsPage() {
       capacity: "180 kW",
       location: "Nizamabad",
       desc: "Representative commercial solar installation for agro-processing.",
-      img: "/projects/project-1.jpeg"
+      img: "/projects/project-9.jpeg"
     },
     {
       id: 10,
-      name: "Government Polytechnic College",
-      category: "Educational Institution",
+      name: "Agriculture Solar System",
+      category: "Farming",
       capacity: "110 kW",
       location: "Karimnagar",
       desc: "Example campus-wide renewable energy implementation.",
-      img: "/projects/project-2.jpeg"
+      img: "/projects/project-10.jpeg"
     },
     {
       id: 11,
-      name: "Saraswati Vidya Mandir",
-      category: "School",
+      name: "Industrial Solar Rooftop System",
+      category: "Industrial",
       capacity: "60 kW",
       location: "Nalgonda",
       desc: "Representative rooftop installation for school infrastructure.",
-      img: "/projects/project-3.jpeg"
+      img: "/projects/project-11.jpeg"
     },
     {
       id: 12,
@@ -174,7 +174,7 @@ export default function ProjectsPage() {
       capacity: "140 kW",
       location: "Hyderabad",
       desc: "Commercial rooftop solar designed for high-energy facilities.",
-      img: "/projects/project-1.jpeg"
+      img: "/projects/project-12.jpeg"
     }
   ];
 
