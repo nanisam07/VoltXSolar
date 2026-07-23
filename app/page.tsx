@@ -14,44 +14,47 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(true);
-
-  // Optional but highly recommended: Stops the user from scrolling while loading
-  useEffect(() => {
-    if (showIntro) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [showIntro]);
+  const [showIntro, setShowIntro] = useState(false); // Disabled intro loader while holding page is active
 
   return (
-    <>
-      {/* AnimatePresence makes sure the slide-up animation works before destroying the loader component */}
-      <AnimatePresence mode="wait">
-        {showIntro && (
-          <IntroLoader key="intro" onComplete={() => setShowIntro(false)} />
+    <main className="w-full min-h-screen bg-[#FAFAFA] flex items-center justify-center p-6 text-center">
+      <div className="max-w-md mx-auto space-y-4 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+        <div className="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+          !
+        </div>
+        <h1 className="text-2xl font-semibold text-gray-900">
+          Website Temporarily Unavailable
+        </h1>
+        <p className="text-gray-600 text-sm leading-relaxed">
+          This website has been temporarily suspended. Please contact your developer or web administrator to restore services.
+        </p>
+      </div>
+
+      {/* 
+        -------------------------------------------------------------
+        ORIGINAL WEBSITE CONTENT (Commented out until ready to restore)
+        -------------------------------------------------------------
+        
+        <AnimatePresence mode="wait">
+          {showIntro && (
+            <IntroLoader key="intro" onComplete={() => setShowIntro(false)} />
+          )}
+        </AnimatePresence>
+
+        {!showIntro && (
+          <div className="w-full">
+            <Navbar />
+            <Hero />
+            <TrustedBy />
+            <Statisctics />
+            <WhyChooseVoltex />
+            <Services />
+            <Testimonials />
+            <CTA />
+            <Footer />
+          </div>
         )}
-      </AnimatePresence>
-
-      {/* Your website content mounts completely ONLY when the loader finishes */}
-      {!showIntro && (
-        <main className="w-full min-h-screen bg-[#FAFAFA]">
-          <Navbar />
-          <Hero />
-          <TrustedBy/>
-          <Statisctics/>
-          <WhyChooseVoltex/>
-          <Services/>
-          <Testimonials/>
-          <CTA />
-          <Footer />
-
-        </main>
-      )}
-    </>
+      */}
+    </main>
   );
 }
