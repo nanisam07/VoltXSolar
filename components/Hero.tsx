@@ -167,7 +167,7 @@ export default function Hero() {
             className="pt-8 border-t border-[#0F172A]/10 grid grid-cols-3 gap-8 text-[#0F172A] font-sans"
           >
             <div className="space-y-1">
-              <p className="text-[24px] lg:text-[28px] font-semibold tracking-tight text-[#0F172A] leading-none">200+</p>
+              <p className="text-[24px] lg:text-[28px] font-semibold tracking-tight text-[#0F172A] leading-none">100+</p>
               <p className="text-[12px] text-[#64748B] leading-tight">Home powered</p>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B]">Projects</p>
             </div>
