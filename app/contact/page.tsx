@@ -262,7 +262,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Office 02 */}
+          {/* Office 02
           <div className="bg-white border border-neutral-200 p-8 md:p-10 rounded-[28px] flex flex-col justify-between shadow-sm transition-all duration-500 hover:shadow-xl hover:border-amber-100 hover:-translate-y-1">
             <div>
               <div className="flex items-center justify-between mb-8">
@@ -292,7 +292,7 @@ export default function ContactPage() {
                 <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

@@ -16,7 +16,7 @@ const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Founder", href: "/founder" },
-  { label: "Projects", href: "/Projects" },
+  // { label: "Projects", href: "/Projects" },
   { label: "Calculate your Solar", href: "/solar" },
   { label: "Contact", href: "/contact" },
 ];
@@ -81,7 +81,7 @@ export default function Navbar() {
   
 
   <Image
-    src="/logo/movelogo.png"
+    src="/logo/movesolar.png"
     alt="Logo"
     width={80}
     height={80}

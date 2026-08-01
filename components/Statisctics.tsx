@@ -15,7 +15,7 @@ interface StatItemProps {
 
 const statData: StatItemProps[] = [
   {
-    number: 200,
+    number: 100,
     suffix: "+",
     label: "Projects Installed",
     description: "Across residential, commercial and industrial properties."

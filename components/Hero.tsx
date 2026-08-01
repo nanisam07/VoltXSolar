@@ -8,12 +8,12 @@ import { ArrowUpRight } from "lucide-react";
 export default function Hero() {
   // FIXED: Explicitly declared as a fixed tuple to pass Framer Motion's ease type validator
   const appleEase = [0.25, 1, 0.5, 1] as const;
-  
+
   const heroImages = [
-    "/image/hero1.webp",              
+    "/image/hero1.webp",
     "/image/hero3.webp",
     "/image/hero4.webp",
-    "/image/hero5.webp",      
+    "/image/hero5.webp",
     "/image/hero1.webp",
   ];
 
@@ -23,9 +23,9 @@ export default function Hero() {
     "commercial setups, high-scale enterprises, and offices.",
     "the next generation of clean, smart infrastructure energy.",
     "large industrial complexes and scalable power systems.",
-    "forward-thinking modern sustainable architecture solutions."
+    "forward-thinking modern sustainable architecture solutions.",
   ];
-  
+
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -39,31 +39,30 @@ export default function Hero() {
     initial: { opacity: 0 },
     animate: {
       opacity: 1,
-      transition: { staggerChildren: 0.06, delayChildren: 0.02 }
+      transition: { staggerChildren: 0.06, delayChildren: 0.02 },
     },
     exit: {
       opacity: 0,
-      transition: { staggerChildren: 0.04, staggerDirection: -1 }
-    }
+      transition: { staggerChildren: 0.04, staggerDirection: -1 },
+    },
   };
 
   const itemVariants: Variants = {
     initial: { opacity: 0, y: 24 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 1.2, ease: appleEase }
+      transition: { duration: 1.2, ease: appleEase },
     },
     exit: {
       opacity: 0,
       y: -16,
-      transition: { duration: 0.8, ease: appleEase }
-    }
+      transition: { duration: 0.8, ease: appleEase },
+    },
   };
 
   return (
     <section className="group/hero relative h-screen w-full bg-[#FAFAFA] flex items-center justify-center px-8 md:px-16 lg:px-24 overflow-hidden select-none">
-      
       {/* RIGHT SIDE ASSET PANEL - IMAGE LOOP ENGINE */}
       <div className="absolute right-0 top-0 w-full lg:w-[52%] h-full pointer-events-none overflow-hidden z-0">
         <AnimatePresence mode="wait">
@@ -77,7 +76,7 @@ export default function Hero() {
           >
             <Image
               src={heroImages[index]}
-              alt={`Voltex premium infrastructure integration - ${dynamicWords[index] || 'Solar'}`}
+              alt={`Voltex premium infrastructure integration - ${dynamicWords[index] || "Solar"}`}
               fill
               priority
               quality={100}
@@ -92,49 +91,47 @@ export default function Hero() {
 
       {/* CORE FRAMEWORK INTERFACE LAYER */}
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 h-full">
-        
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="initial"
           animate="animate"
           exit="exit"
-          className="lg:col-span-6 flex flex-col justify-center h-full space-y-12 pt-12"
+          className="lg:col-span-6 flex flex-col justify-center h-full space-y-8 sm:space-y-10 pt-12 text-left items-start"
         >
-          {/* Typography Matrix with Premium Slide-and-Fade Typography Loop */}
-          <div className="space-y-5">
-            <motion.h1 
+          {/* Typography Matrix */}
+          <div className="space-y-4 w-full text-left">
+            <motion.h1
               variants={itemVariants}
-              className="text-[42px] sm:text-[54px] lg:text-[64px] xl:text-[76px] font-semibold tracking-[-0.035em] leading-[1.06] text-[#0F172A] font-sans antialiased"
+              className="text-[42px] sm:text-[54px] lg:text-[64px] xl:text-[76px] font-semibold tracking-[-0.035em] leading-[1.06] text-[#0F172A] font-sans antialiased text-left"
             >
-              Power your{" "}
-              <div className="inline-flex relative h-[1.15em] overflow-hidden align-top min-w-[320px] sm:min-w-[360px] md:min-w-[420px]">
-                <AnimatePresence mode="wait">
+              <span className="block">Power your</span>
+              <span className="inline-flex relative h-[1.12em] overflow-hidden align-top text-left">
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.span
                     key={index}
-                    initial={{ y: "60%", opacity: 0 }}
+                    initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: "0%", opacity: 1 }}
-                    exit={{ y: "-60%", opacity: 0 }}
-                    transition={{ duration: 0.65, ease: appleEase }}
-                    className="text-[#059669] font-bold tracking-[-0.04em] whitespace-nowrap"
+                    exit={{ y: "-100%", opacity: 0 }}
+                    transition={{ duration: 0.55, ease: appleEase }}
+                    className="text-[#059669] font-bold tracking-[-0.04em] whitespace-nowrap block"
                   >
                     {dynamicWords[index]}
                   </motion.span>
                 </AnimatePresence>
-              </div>
-              <br />
-              <span className="text-[#0F172A]/80">Own your Energy</span>
+              </span>
+              <span className="block text-[#0F172A]/80">Own your Energy</span>
             </motion.h1>
 
-            {/* Paragraph Loop Container */}
-            <div className="h-[4.5em] sm:h-[3.5em] md:h-[3em] relative overflow-hidden max-w-md">
-              <AnimatePresence mode="wait">
-                <motion.p 
+            {/* Dynamic Paragraph Loop */}
+            <div className="h-[3.25em] sm:h-[2.75em] relative overflow-hidden max-w-lg w-full text-left">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.p
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.5, ease: appleEase }}
-                  className="absolute inset-0 text-[14px] lg:text-[15px] font-normal text-[#64748B] leading-relaxed antialiased font-sans"
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.45, ease: appleEase }}
+                  className="absolute inset-x-0 top-0 text-[14px] lg:text-[15px] font-normal text-[#64748B] leading-relaxed antialiased font-sans text-left"
                 >
                   Reduce your electricity bills with premium rooftop solar systems for {dynamicSubtexts[index]} From consultation to installation, we take care of everything.
                 </motion.p>
@@ -142,8 +139,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Action Systems with Premium Emerald Palette Configuration */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          {/* Action Systems */}
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-start gap-4 w-full">
             <a
               href="/survey"
               className="group/btn relative flex items-center justify-center gap-2.5 px-7 py-3.5 bg-[#059669] hover:bg-[#047857] text-white font-medium text-[13px] tracking-tight rounded-full transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] shadow-[0_4px_12px_rgba(5,150,105,0.15)] hover:shadow-[0_6px_20px_rgba(5,150,105,0.25)] hover:-translate-y-0.5 active:translate-y-0"
@@ -161,24 +158,24 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Industrial Trust Metrics - Sealed Subtext Elements */}
+          {/* Industrial Trust Metrics */}
           <motion.div
             variants={itemVariants}
-            className="pt-8 border-t border-[#0F172A]/10 grid grid-cols-3 gap-8 text-[#0F172A] font-sans"
+            className="pt-8 border-t border-[#0F172A]/10 grid grid-cols-3 gap-8 text-[#0F172A] font-sans w-full"
           >
-            <div className="space-y-1">
+            <div className="space-y-1 text-left">
               <p className="text-[24px] lg:text-[28px] font-semibold tracking-tight text-[#0F172A] leading-none">100+</p>
               <p className="text-[12px] text-[#64748B] leading-tight">Home powered</p>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B]">Projects</p>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 text-left">
               <p className="text-[24px] lg:text-[28px] font-semibold tracking-tight text-[#0F172A] leading-none">25-Year</p>
               <p className="text-[12px] text-[#64748B] leading-tight">Performance Quality</p>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B]">Warranty</p>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 text-left">
               <p className="text-[24px] lg:text-[28px] font-semibold tracking-tight text-[#0F172A] leading-none">MNRE</p>
               <p className="text-[12px] text-[#64748B] leading-tight">Government</p>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B]">Approved</p>
@@ -188,7 +185,6 @@ export default function Hero() {
 
         {/* Structural balance column mapping behind background mask */}
         <div className="hidden lg:block lg:col-span-6 pointer-events-none" />
-
       </div>
     </section>
   );
