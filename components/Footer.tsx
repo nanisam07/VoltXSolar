@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useInView, MotionProps } from "framer-motion";
 
 const socialLinks = [
@@ -12,30 +12,9 @@ const socialLinks = [
 export default function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isContainerInView = useInView(containerRef, { once: true, amount: 0.05 });
-  
-  // Custom states for tracking elegant fluid interactive logo coordinates
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Optional hover state if you want the subtle color transition when hovering the footer
   const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      setMousePos({ x, y });
-    };
-
-    const target = containerRef.current;
-    if (target) {
-      target.addEventListener("mousemove", handleMouseMove);
-    }
-    return () => {
-      if (target) {
-        target.removeEventListener("mousemove", handleMouseMove);
-      }
-    };
-  }, []);
 
   // Explicitly typing this as MotionProps fixes the spread operator errors
   const getFadeUpAnimation = (delayIndex: number): MotionProps => ({
@@ -56,18 +35,12 @@ export default function Footer() {
       className="relative w-full bg-[#FAFAFA] text-[#111111] selection:bg-[#111111] selection:text-white antialiased overflow-hidden flex flex-col pt-20 pb-10"
       aria-labelledby="footer-core-heading"
     >
-      {/* Luxury Typographic Liquid Core — Fills structural layout space interactively */}
+      {/* Luxury Typographic Background — Kept static in the center */}
       <div 
-        className="absolute pointer-events-none font-bold tracking-[-0.05em] leading-none text-black/[0.03] select-none text-center w-full uppercase transition-colors duration-700 ease-out z-0"
+        className="absolute pointer-events-none font-bold tracking-[-0.05em] leading-none select-none text-center w-full uppercase transition-colors duration-700 ease-out z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         style={{
           fontSize: "13.5vw",
-          left: isHovered ? `${mousePos.x}px` : "50%",
-          top: isHovered ? `${mousePos.y}px` : "48%",
-          transform: "translate(-50%, -50%)",
-          color: isHovered ? "rgba(17, 17, 17, 0.14)" : "rgba(17, 17, 17, 0.03)",
-          transition: isHovered 
-            ? "left 0.25s cubic-bezier(0.25, 1, 0.5, 1), top 0.25s cubic-bezier(0.25, 1, 0.5, 1), color 0.5s ease" 
-            : "left 0.8s ease, top 0.8s ease, color 0.8s ease"
+          color: isHovered ? "rgba(17, 17, 17, 0.08)" : "rgba(17, 17, 17, 0.03)",
         }}
         aria-hidden="true"
       >
@@ -125,7 +98,7 @@ export default function Footer() {
         </div>
 
         {/* =====================================================
-            SECTION 4: Pure Technical Line Divider (Spaced for Logo Fluidity)
+            SECTION 4: Pure Technical Line Divider
             ===================================================== */}
         <div className="w-full h-[1px] bg-black/[0.08] mt-36 mb-6" />
 

@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { ArrowUpRight, Check, Sparkles, Eye, Target, ShieldCheck, Leaf, Cpu, Award, Users, Lock, LifeBuoy } from "lucide-react";
+import { ArrowUpRight, Check, Sparkles, Eye, Target } from "lucide-react";
 
 // --- Framer Motion Animation Presets ---
 const fvFadeUp: Variants = {
@@ -65,13 +65,13 @@ export default function AboutPage() {
   ];
 
   const companyValues = [
-    { icon: Award, name: "Quality & Excellence", desc: "Delivering premium workmanship and Tier-1 components on every installation, without compromise." },
-    { icon: Users, name: "Customer Satisfaction", desc: "Putting your needs first with transparent consulting, honest timelines, and dependable communication." },
-    { icon: Lock, name: "Integrity & Transparency", desc: "Clear pricing, honest reporting, and no artificial padding across every stage of your project." },
-    { icon: ShieldCheck, name: "Safety First", desc: "Strict adherence to safety standards across every installation, wiring job, and maintenance visit." },
-    { icon: Cpu, name: "Innovation", desc: "Pushing technical thresholds with state-of-the-art microinverters and smart architectural integration modules." },
-    { icon: Leaf, name: "Sustainability", desc: "Ensuring your property leaves zero environmental friction while fostering long-term bio-harmonic structural yield." },
-    { icon: LifeBuoy, name: "Reliable After-Sales Support", desc: "Ongoing maintenance, monitoring, and responsive service long after your system is commissioned." },
+    { emoji: "🏆", name: "Quality & Excellence", desc: "Delivering premium workmanship and Tier-1 components on every installation, without compromise.", tag: "Tier 1" },
+    { emoji: "🤝", name: "Customer Satisfaction", desc: "Putting your needs first with transparent consulting, honest timelines, and dependable communication.", tag: "Direct" },
+    { emoji: "💎", name: "Integrity & Transparency", desc: "Clear pricing, honest reporting, and no artificial padding across every stage of your project.", tag: "Pure" },
+    { emoji: "🛡️", name: "Safety First", desc: "Strict adherence to safety standards across every installation, wiring job, and maintenance visit.", tag: "Secure" },
+    { emoji: "⚡", name: "Innovation", desc: "Pushing technical thresholds with state-of-the-art microinverters and smart architectural integration modules.", tag: "Next-Gen" },
+    { emoji: "🌱", name: "Sustainability", desc: "Ensuring your property leaves zero environmental friction while fostering long-term bio-harmonic structural yield.", tag: "Eco" },
+    { emoji: "🛠️", name: "Reliable After-Sales Support", desc: "Ongoing maintenance, monitoring, and responsive service long after your system is commissioned.", tag: "24/7" },
   ];
 
   return (
@@ -276,26 +276,73 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* SECTION 6: OUR CORE VALUES */}
-        <section className="relative py-28 md:py-36 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1800px] mx-auto z-10 border-t border-neutral-200/80">
+        {/* SECTION 6: OUR CORE VALUES (HIGHLY ANIMATED EMOJI CARDS) */}
+        <section className="relative py-28 md:py-36 px-6 md:px-12 lg:px-24 xl:px-32 max-w-[1800px] mx-auto z-10 border-t border-neutral-200/80 bg-neutral-50/50">
           <div className="mb-20 space-y-4">
             <span className="block text-xs font-mono tracking-widest text-neutral-400 uppercase">Ethical Blueprint</span>
             <h2 className="text-3xl md:text-5xl font-normal tracking-tight text-neutral-900">Our Core Values</h2>
           </div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fvRevealContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-neutral-200/40 pb-16">
-            {companyValues.map((value) => {
-              const IconComp = value.icon;
-              return (
-                <motion.div key={value.name} variants={fvFadeUp} className="space-y-4 group/val border-t border-neutral-200 pt-6">
-                  <div className="p-2 bg-neutral-100 rounded-lg w-fit transition-colors duration-300 group-hover/val:bg-neutral-900 group-hover/val:text-white text-neutral-800">
-                    <IconComp className="w-5 h-5" strokeWidth={1.5} />
-                  </div>
-                  <h4 className="text-lg font-medium text-neutral-900 transition-colors group-hover/val:text-neutral-950">{value.name}</h4>
-                  <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed group-hover/val:text-neutral-600 transition-colors duration-300">{value.desc}</p>
-                </motion.div>
-              );
-            })}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fvRevealContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {companyValues.map((value, idx) => (
+              <motion.div 
+                key={value.name} 
+                variants={fvFadeUp} 
+                
+                className="relative group/val p-8 bg-white border border-neutral-200/70 rounded-3xl space-y-6 flex flex-col items-center text-center transition-all duration-500 ease-[0.16,1,0.3,1] hover:border-neutral-400 hover:shadow-2xl hover:shadow-neutral-300/40 hover:-translate-y-2 overflow-hidden"
+              >
+                {/* Top dynamic highlight bar */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neutral-800 via-neutral-950 to-neutral-700 scale-x-0 group-hover/val:scale-x-100 transition-transform duration-500 ease-out origin-left" />
+
+                {/* Animated Emoji Badge Housing */}
+                {/* Changed justify-between to justify-center and gap to handle tag */}
+                <div className="relative flex items-center justify-center gap-4 w-full">
+                  <motion.div 
+                    
+                    className="relative flex items-center justify-center w-14 h-14 bg-neutral-100/80 rounded-2xl border border-neutral-200/60 shadow-xs group-hover/val:border-neutral-900/20 group-hover/val:bg-neutral-900 transition-colors duration-500"
+                    animate={{ y: [0, -3, 0] }}
+                    transition={{
+                      duration: 3 + (idx % 3),
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <motion.span 
+                     
+                      className="text-2xl select-none"
+                      whileHover={{ scale: 1.3, rotate: [0, -10, 10, 0] }}
+                      transition={{ type: "spring", stiffness: 300, damping: 12 }}
+                    >
+                      {value.emoji}
+                    </motion.span>
+                    
+                    
+                    <div className="absolute inset-0 bg-neutral-900/10 blur-xl rounded-2xl opacity-0 group-hover/val:opacity-100 transition-opacity duration-500" />
+                  </motion.div>
+
+                  <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-neutral-400 bg-neutral-100 group-hover/val:bg-neutral-900 group-hover/val:text-white px-2.5 py-1 rounded-full transition-colors duration-300">
+                    {value.tag}
+                  </span>
+                </div>
+
+                {/* Content Stack */}
+                <div className="space-y-3 flex-grow z-10">
+                  <h4 className="text-xl font-medium text-neutral-900 transition-colors duration-300 group-hover/val:text-black tracking-tight">
+                    {value.name}
+                  </h4>
+                  <p className="text-sm text-neutral-500 font-light leading-relaxed group-hover/val:text-neutral-700 transition-colors duration-300">
+                    {value.desc}
+                  </p>
+                </div>
+
+                {/* Micro baseline indicator */}
+                <div className="w-full pt-4 border-t border-neutral-100 flex justify-between items-center text-[10px] font-mono uppercase text-neutral-400 tracking-wider">
+                  <span>Move Standard</span>
+                  <span className="opacity-0 group-hover/val:opacity-100 transition-opacity duration-300 text-neutral-900 font-bold">0{idx + 1}</span>
+                </div>
+
+              </motion.div>
+            ))}
           </motion.div>
         </section>
 
@@ -318,7 +365,7 @@ export default function AboutPage() {
             
             <div className="pt-6">
               <MotionLink
-              href="/survey"
+                href="/survey"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center justify-center space-x-3 bg-[#111111] text-[#FAFAFA] text-sm font-medium tracking-tight px-10 py-4 rounded-full shadow-xl shadow-neutral-900/10 cursor-pointer relative group/btn overflow-hidden"
